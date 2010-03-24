@@ -1,0 +1,83 @@
+#summary How to use the viaboxx dbmigrate plugin
+#labels Featured
+
+=viaboxx dbmigrate plugin = 
+Integration of agimatec-tools/dbmigrate into a grails project.
+
+
+=build the plugin=
+{{{
+grails package-plugin
+}}}
+
+=use the plugin in your grails project=
+
+{{{
+grails install-plugin ../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip
+}}}
+
+where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the plugin package
+
+=prepare your grails project=
+
+  * create a folder "database" (at any location you like)
+  * create a configuration under grails-app/conf/DbMigrate.groovy
+  * create setup.xml or upgrade.xml under database and
+ configure "setup" or "upgrade" as mainConfig in DbMigrate.groovy
+
+=examples=
+
+==DbMigrate.groovy==
+
+{{{
+dbmigrate {
+  // when true, use DataSource.groovy to configure connection to database
+  dataSource = true
+  // when true, compare DbVersion with application.properties#db.version before starting migration
+  checkMigrationRequired = true
+}
+
+// environment specific settings
+environments {
+  development {
+    dbmigrate {
+      mainConfig = "database/setup.xml"
+    }
+  }
+  test {
+    dbmigrate {
+      mainConfig = "database/setup.xml"
+    }
+  }
+  production {
+    dbmigrate {
+      mainConfig = "database/upgrade.xml"
+    }
+  }
+}
+}}}
+
+==setup.xml==
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config name="migration">
+
+  <map name="env">
+  </map>
+
+  <!-- Scripts = the source path for scripts to scan for -->
+  <file name="Scripts-Before-All" dir="database/setup/before" file=""/>
+  <!--<file name="Scripts" dir="setup" file=""/>-->
+  <!--<file name="JdbcConfig" file="database/conf/connect.properties"/>-->
+
+</config>
+}}}
+
+==application.properties==
+{{{
+db.version=1.0.0
+}}}
+
+for more information, contact Roman.Stumm@viaboxx.de
