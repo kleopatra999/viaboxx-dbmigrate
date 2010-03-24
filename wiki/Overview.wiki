@@ -4,12 +4,6 @@
 =viaboxx dbmigrate plugin = 
 Integration of agimatec-tools/dbmigrate into a grails project.
 
-
-=build the plugin=
-{{{
-grails package-plugin
-}}}
-
 =use the plugin in your grails project=
 
 {{{
