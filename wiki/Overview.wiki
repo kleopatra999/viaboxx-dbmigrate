@@ -28,6 +28,7 @@ where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the
 =examples=
 
 ==DbMigrate.groovy==
+In your grails project, you can configure the dbmigrate tool with under grails-app/conf/DbMigrate.groovy
 
 {{{
 dbmigrate {
@@ -58,6 +59,9 @@ environments {
 }}}
 
 ==setup.xml==
+
+The rest of the configuration depends on the use of agimatec-tools/dbmigrate. Detailed information about the configuration and features can be found here:
+  * http://code.google.com/p/agimatec-tools/wiki/dbmigrate
 
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
