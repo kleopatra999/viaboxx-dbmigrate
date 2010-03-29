@@ -100,7 +100,6 @@ environments {
   }
   production {
     dbmigrate {
-            checkMigrationRequired = false
       mainConfig = "upgrade.xml"
     }
   }
