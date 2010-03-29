@@ -19,57 +19,6 @@ where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the
   * create setup.xml or upgrade.xml under database and
  configure "setup.xml" or "upgrade.xml" as mainConfig in DbMigrate.groovy
 
-add a dependency in your pom.xml (or BootConfig.groovy) of your grails project to dbmigrate
-{{{
- <dependency>
-      <groupId>com.agimatec</groupId>
-      <artifactId>dbmigrate</artifactId>
-      <version>2.3.1-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>commons-io</groupId>
-          <artifactId>commons-io</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>commons-lang</groupId>
-          <artifactId>commons-lang</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>com.thoughtworks.xstream</groupId>
-          <artifactId>xstream</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>org.freemarker</groupId>
-          <artifactId>freemarker</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>org.dbunit</groupId>
-          <artifactId>dbunit</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>log4j</groupId>
-          <artifactId>log4j</artifactId>
-        </exclusion>
-
-        <exclusion>
-          <groupId>org.codehaus.groovy</groupId>
-          <artifactId>groovy-all</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-}}}
-
 =examples=
 
 ==DbMigrate.groovy==
