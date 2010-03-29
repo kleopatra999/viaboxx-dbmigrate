@@ -23,7 +23,6 @@ where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the
 
 ==DbMigrate.groovy==
 In your grails project, you can configure the dbmigrate tool with under grails-app/conf/DbMigrate.groovy. 
-All files are relative to "rootDir", where cp:// is the classpath protocol, when files are located in the .war archive or any other .jar 
 
 {{{
 dbmigrate {
@@ -54,6 +53,11 @@ environments {
   }
 }
 }}}
+
+ * rootDir: All files are relative to "rootDir". This parameter is optional. default value is file: 
+ * cp:// is the classpath protocol, when files are located in the .war archive or any other .jar 
+ * checkMigrationRequired (boolean), true: when true, compare DbVersion in database with application.properties#db.version before starting migration. Starts migration when versions differ. This is an optional parameter, default value is false.
+ * mainConfig, required, without a mainConfig, dbmigrate will not start. This tells dbmigrate, which configuration to use. the configuration is a xml file. 
 
 ==setup.xml==
 
