@@ -14,10 +14,10 @@ where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the
 
 =prepare your grails project=
 
-  * create a folder "database" (at any location you like)
+  * create a folder "database" (at any location you like, e.g. under grails-app/conf/)
   * create a configuration under grails-app/conf/DbMigrate.groovy
   * create setup.xml or upgrade.xml under database and
- configure "setup" or "upgrade" as mainConfig in DbMigrate.groovy
+ configure "setup.xml" or "upgrade.xml" as mainConfig in DbMigrate.groovy
 
 add a dependency in your pom.xml (or BootConfig.groovy) of your grails project to dbmigrate
 {{{
@@ -74,6 +74,7 @@ add a dependency in your pom.xml (or BootConfig.groovy) of your grails project t
 
 ==DbMigrate.groovy==
 In your grails project, you can configure the dbmigrate tool with under grails-app/conf/DbMigrate.groovy
+All files are relative to "rootDir", where cp:// means classpath, when files are part of grails .war archive or any other .jar 
 
 {{{
 dbmigrate {
@@ -81,23 +82,26 @@ dbmigrate {
   dataSource = true
   // when true, compare DbVersion with application.properties#db.version before starting migration
   checkMigrationRequired = true
+  rootDir = "cp://database/"
 }
 
 // environment specific settings
 environments {
   development {
     dbmigrate {
-      mainConfig = "database/setup.xml"
+      mainConfig = "setup.xml"
     }
   }
   test {
     dbmigrate {
-      mainConfig = "database/setup.xml"
+      checkMigrationRequired = false
+      mainConfig = "setup.xml"
     }
   }
   production {
     dbmigrate {
-      mainConfig = "database/upgrade.xml"
+            checkMigrationRequired = false
+      mainConfig = "upgrade.xml"
     }
   }
 }
@@ -113,13 +117,42 @@ The rest of the configuration depends on the use of agimatec-tools/dbmigrate. De
 
 <config name="migration">
 
+  <!-- Optional: environment variables, can be used inside scripts as ${DB_USER}.
+   Predefined keys:
+    DB_USER       : if exists, overrule user from JdbcConfig
+    DB_PASSWORD   : if exists, overrule password from JdbcConfig
+    DB_SCHEMA     : if exists, overrule schema name of jdbcUrl from JdbcConfig
+    DB_URL        : if exists, overrule jdbcUrl from JdbcConfig
+    DB_DRIVER        : if exists, overrule jdbcDriver from JdbcConfig
+  -->
   <map name="env">
   </map>
 
   <!-- Scripts = the source path for scripts to scan for -->
-  <file name="Scripts-Before-All" dir="database/setup/before" file=""/>
+  <file name="Scripts-Before-All" dir="setup/before" file=""/>
   <!--<file name="Scripts" dir="setup" file=""/>-->
+  <file name="Scripts-After-All" dir="upgrade/after" file=""/>
+
+  <!--<file name="JdbcConfig" file="conf/connect.properties"/>-->
+
+</config>
+}}}
+
+== upgrade.xml ==
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config name="migration">
+
+  <map name="env">
+  </map>
+
+  <file name="Scripts-Before-All" dir="upgrade/before" file=""/>
+  <file name="Scripts" dir="upgrade" file=""/>
+  <file name="Scripts-After-All" dir="upgrade/after" file=""/>
+
   <!--<file name="JdbcConfig" file="database/conf/connect.properties"/>-->
+  <!--<text name="to-version" value="@database-version@"/>-->
 
 </config>
 }}}
