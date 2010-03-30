@@ -42,3 +42,4 @@ class DbVersion implements Serializable {
 }}}
 
 This is an optional file. The dbmigrate-tool does not use your domain model to read/write the db_version table.
+In case you create this class, hibernate will generate apropiate DDL code to create the table as well.
