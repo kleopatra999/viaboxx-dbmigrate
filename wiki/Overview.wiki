@@ -54,6 +54,7 @@ environments {
 }
 }}}
 
+ * dataSource: use the settings in DataSource.groovy to configure the connection to the database. If you also use connection settings in the configuration of the dbmigrate tool, the tool settings overrule the settings in DataSource.groovy. This might be useful, when the application's database does not yet exist and needs to be created before a connection can be established with DataSource.groovy
  * rootDir: All files are relative to "rootDir". This parameter is optional. default value is file: 
  * cp:// is the classpath protocol, when files are located in the .war archive or any other .jar 
  * checkMigrationRequired (boolean), true: when true, compare DbVersion in database with application.properties#db.version before starting migration. Starts migration when versions differ. This is an optional parameter, default value is false.
