@@ -1,0 +1,44 @@
+#summary Domain class DbVersion
+
+= Introduction =
+
+You can let the tool automatically create the db_version table for you or you can create the db_version table by sql script:
+
+{{{
+CREATE TABLE db_version (
+  since TIMESTAMP,
+  version VARCHAR(100) NOT NULL
+);
+}}}
+
+
+= Domain class DbVersion =
+
+If you want to have access to the table with a usual grails domain class, you can create a class as grails-app/domain/{your.package.here}/DbVersion.groovy with groovy source:
+
+{{{
+class DbVersion implements Serializable {
+
+  String version;
+  Date since;
+
+  static constraints = {
+    version(size: 0..100)
+  }
+
+  static mapping = {
+    version false
+    id composite: ['version']
+  }
+
+
+  public String toString() {
+    return "DbVersion{" +
+            "version='" + version + '\'' +
+            ", since=" + since +
+            '}';
+  }
+}
+}}}
+
+This is an optional file. The dbmigrate-tool does not use your domain model to read/write the db_version table.
