@@ -21,6 +21,8 @@ where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-1.0.zip" is the path to the
 
 =examples=
 
+*Download the examples for a complete grails project setup with dbmigrate.*
+
 ==DbMigrate.groovy==
 In your grails project, you can configure the dbmigrate tool with under grails-app/conf/DbMigrate.groovy. 
 
