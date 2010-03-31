@@ -1,4 +1,4 @@
-#summary Domain class DbVersion
+#summary Accessing the db_version table with a grails domain class
 
 = Introduction =
 
