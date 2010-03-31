@@ -10,7 +10,7 @@ Integration of agimatec-tools/dbmigrate into a grails project.
 grails install-plugin ../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-1.0.zip
 }}}
 
-where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-0.1.zip" is the path to the plugin package
+where "../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-1.0.zip" is the path to the plugin package
 
 =prepare your grails project=
 
@@ -81,13 +81,14 @@ The rest of the configuration depends on the use of agimatec-tools/dbmigrate. De
   <map name="env">
   </map>
 
-  <!-- Scripts = the source path for scripts to scan for -->
-  <file name="Scripts-Before-All" dir="setup/before" file=""/>
-  <!--<file name="Scripts" dir="setup" file=""/>-->
-  <file name="Scripts-After-All" dir="upgrade/after" file=""/>
+  <!--<file name="Scripts-Before-All" dir="before" file=""/>-->
+  <file name="Scripts" dir="setup" file=""/>
+  <!--<file name="Scripts-WithApplicationContext" dir="cp://dbmigrate" relative="false" file=""/>-->
+  <file name="Scripts-After-All" dir="verify" file=""/>
 
-  <!--<file name="JdbcConfig" file="conf/connect.properties"/>-->
-
+ <map name="version-meta">
+    <Boolean name="auto-version" value="true"/>
+  </map>
 </config>
 }}}
 
@@ -100,12 +101,16 @@ The rest of the configuration depends on the use of agimatec-tools/dbmigrate. De
   <map name="env">
   </map>
 
-  <file name="Scripts-Before-All" dir="upgrade/before" file=""/>
+<!--<file name="Scripts-Before-All" dir="before" file=""/>-->
   <file name="Scripts" dir="upgrade" file=""/>
-  <file name="Scripts-After-All" dir="upgrade/after" file=""/>
 
-  <!--<file name="JdbcConfig" file="database/conf/connect.properties"/>-->
-  <!--<text name="to-version" value="@database-version@"/>-->
+  <!--<file name="Scripts-WithApplicationContext" dir="cp://dbmigrate" relative="false" file=""/>-->
+  <file name="Scripts-After-All" dir="verify" file=""/>
+
+
+  <map name="version-meta">
+    <Boolean name="auto-version" value="true"/>
+  </map>
 
 </config>
 }}}
