@@ -1,4 +1,4 @@
-#summary Accessing the db_version table with a grails domain class
+#summary Accessing the db_version table in your grails application
 
 = Introduction =
 
