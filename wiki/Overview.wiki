@@ -4,6 +4,10 @@
 =viaboxx dbmigrate plugin = 
 Integration of agimatec-tools/dbmigrate into a grails project.
 
+=NEWS=
+Aprol 9th 2010
+ * viaboxx-dbmigrate release 1.1 available on codehaus under grails plugins
+
 =use the plugin in your grails project=
 
 install from official grails-plugin list
