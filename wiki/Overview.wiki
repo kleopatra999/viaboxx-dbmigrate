@@ -6,6 +6,12 @@ Integration of agimatec-tools/dbmigrate into a grails project.
 
 =use the plugin in your grails project=
 
+install from official grails-plugin list
+{{{
+grails install-plugin viaboxx-dbmigrate
+}}}
+
+install from packaged plugin .zip file
 {{{
 grails install-plugin ../viaboxx-dbmigrate/grails-viaboxx-dbmigrate-1.0.zip
 }}}
