@@ -18,7 +18,7 @@ Sept 23th 2010
   main() method to start without webapp/server running
   bug parsing foreign key (postgres) fixed
   initial db connection may fail. scripts can create the database.
-  also replace properties in <text/> 
+  also replace properties in &lt;text/&gt; 
 
 April 9th 2010
  * viaboxx-dbmigrate release 1.1 available on codehaus under grails plugins
