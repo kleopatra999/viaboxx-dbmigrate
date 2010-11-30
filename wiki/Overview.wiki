@@ -10,13 +10,11 @@ Integration of agimatec-tools/dbmigrate into a grails project.
    Official Grails-Plugin site: http://grails.org/plugin/viaboxx-dbmigrate
 
 == Release 1.2.6 ==
-  *Sept 23th 2010*
+  Sept 23th 2010
 
   supporting many GroovyScript directories
 
-  minor fixes 
-    (GroovyScriptDirs, 
-    using to-version + from-version as environment variables so that you can use them in scripts)
+  minor fixes (GroovyScriptDirs, using to-version + from-version as environment variables so that you can use them in scripts)
 
   removed commons-io, commons-lang, commons-logging, log4j because these jars are already part of grails: avoid version conflicts
 
